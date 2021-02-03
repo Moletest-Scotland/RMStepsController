@@ -1,4 +1,4 @@
-RMStepsController ![Build Status](https://travis-ci.org/CooperRS/RMStepsController.svg?branch=master)
+RMStepsController
 =============================
 
 This is an iOS control for guiding users through a process step-by-step

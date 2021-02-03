@@ -95,6 +95,17 @@
  */
 - (void)canceled;
 
+
+/**
+ This method is called after a new view controller is shown and the transition is complete.
+ */
+- (void)transitionCompleteToIndex:(NSInteger)newIndex;
+
+/**
+  Called, when showing a new step view controller. Must call super if overriding
+*/
+- (void)showStepViewController:(UIViewController *)aViewController animated:(BOOL)animated;
+
 @end
 
 /**

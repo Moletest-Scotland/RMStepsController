@@ -150,7 +150,9 @@
     [self.stepViewControllerContainer addSubview:aViewController.view];
     
     self.currentStepViewController = aViewController;
-    [self.stepsBar setIndexOfSelectedStep:[self.childViewControllers indexOfObject:aViewController] animated:NO];
+    NSInteger newIndex = [self.childViewControllers indexOfObject:aViewController];
+    [self.stepsBar setIndexOfSelectedStep:newIndex animated:NO];
+    [self transitionCompleteToIndex: newIndex];
 }
 
 - (void)showStepViewControllerWithSlideInAnimation:(UIViewController *)aViewController {
@@ -182,6 +184,7 @@
     } completion:^(BOOL finished) {
         [blockself.currentStepViewController.view removeFromSuperview];
         blockself.currentStepViewController = aViewController;
+        [blockself transitionCompleteToIndex: newIndex];
     }];
 }
 
@@ -230,6 +233,10 @@
 
 - (void)canceled {
     NSLog(@"Canceled");
+}
+
+- (void)transitionCompleteToIndex:(NSInteger)newIndex  {
+    NSLog(@"transition Complete, newIndex = %ld", (long)newIndex);
 }
 
 #pragma mark - RMStepsBar Delegates
